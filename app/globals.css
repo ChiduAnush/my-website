@@ -34,6 +34,11 @@ body {
 
 /* Apply the animation to the background pattern */
 .background-pattern {
-  opacity: 0; 
-  animation: fadeIn 1s ease-in-out 1s forwards; 
+  /* opacity: 0; 
+  animation: fadeIn 1s ease-in-out 1s forwards;  */
+}
+
+.fade-in-line {
+  opacity: 0;
+  animation: fadeIn 0.2s forwards ease-in;
 }

@@ -38,6 +38,8 @@ export default function Home() {
         line.textContent = lineContent
         line.style.height = '24px'
         line.style.fontSize = '16px'
+        line.className = 'fade-in-line'
+        line.style.animationDelay = `${i * 0.05}s` // Stagger the fade-in
         backgroundContainer.appendChild(line)
       }
     }
