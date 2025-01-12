@@ -55,16 +55,18 @@ export default function Home() {
       className={`min-h-screen relative ${GeistMono.className} overflow-auto`}
       style={{ fontSize: '16px' }}
     >
-      {/* Background Pattern */}
+      {/* Background Pattern  */}
       <div 
-        className="background-pattern fixed inset-0 text-[#f2f2f2] whitespace-pre pointer-events-none"
+        className="background-pattern fixed inset-0 text-[#171717] whitespace-pre pointer-events-none"
         style={{ 
           lineHeight: '24px',
           fontFamily: 'inherit',
-          zIndex: 0
+          zIndex: 0,
+          opacity: 0.05, 
+          fontWeight: 500,
         }}
       />
-      
+            
       {/* Main Content */}
       <div className="main-content relative min-h-screen pl-4 pr-4 pt-6 space-y-12 lg:pl-16 lg:pt-12 " style={{
         textShadow: '0px 0px 200px rgba(255, 255, 255, 1)',
