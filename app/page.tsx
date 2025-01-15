@@ -153,6 +153,15 @@ export default function Home() {
             </p>
           </div>
         </section>
+
+        <section className='space-y-0'>
+            <h2 className="content-line font-bold">fun fact</h2>
+            <p className="content-line">
+            people should be blessed to have a friend like me
+          </p>
+        </section>
+
+
       </div>
     </div>
   )
