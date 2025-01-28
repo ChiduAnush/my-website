@@ -32,13 +32,22 @@ body {
   }
 }
 
-/* Apply the animation to the background pattern */
-.background-pattern {
-  /* opacity: 0; 
-  animation: fadeIn 1s ease-in-out 1s forwards;  */
+@keyframes BGfadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.06;
+  }
 }
 
-.fade-in-line {
-  opacity: 0;
-  animation: fadeIn 0.2s forwards ease-in;
+.main-content {
+  /* animation: fadeIn 1.5s ease-in-out; */
+  animation-name: fadeIn;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+}
+
+.background-pattern {
+  animation: BGfadeIn 2s ease-in-out;
 }

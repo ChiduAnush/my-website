@@ -62,7 +62,7 @@ export default function Home() {
           lineHeight: '24px',
           fontFamily: 'inherit',
           zIndex: 0,
-          opacity: 0.05, 
+          opacity: 0.06, 
           fontWeight: 500,
         }}
       />
