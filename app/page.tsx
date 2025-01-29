@@ -1,13 +1,26 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef} from 'react'
 import { GeistMono } from 'geist/font/mono'
 import Link from 'next/link'
+
+// Add global styles for the animation
+const styles = `
+  @keyframes symbol-fade {
+    0%, 100% { opacity: 0.55; }
+    50% { opacity: 1; }
+  }
+`
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null)
   
   useEffect(() => {
+    // Inject the animation styles
+    const styleSheet = document.createElement('style')
+    styleSheet.innerHTML = styles
+    document.head.appendChild(styleSheet)
+
     const generateBackground = () => {
       if (!containerRef.current) return
       
@@ -17,36 +30,43 @@ export default function Home() {
       if (!backgroundContainer) return
       
       backgroundContainer.innerHTML = ''
-      const symbols = '   !X#$%8&*()_{};,.>?/~`\\'
+      const symbols = '  0!X#$%8 &*(  )_{};,.>/~`\\'
       const containerWidth = window.innerWidth
-      const charWidth = 8 // 8px character width
+      const charWidth = 8
       const charsPerLine = Math.ceil(containerWidth / charWidth)
-      
-      // Generate enough lines to fill the viewport
-      const linesNeeded = Math.ceil(window.innerHeight / 20) // 20px line height
-      
+      const linesNeeded = Math.ceil(window.innerHeight / 20)
+
       for (let i = 0; i < linesNeeded; i++) {
         const line = document.createElement('div')
-        let lineContent = ''
-        for (let j = 0; j < charsPerLine; j++) {
-          if (Math.random() < 0.2) { // 20% chance of whitespace
-            lineContent += ' '
-          } else {
-            lineContent += symbols[Math.floor(Math.random() * symbols.length)]
-          }
-        }
-        line.textContent = lineContent
-        line.style.height = '24px'
+        line.style.height = '24.2px'
         line.style.fontSize = '16px'
-        line.className = 'fade-in-line'
-        line.style.animationDelay = `${i * 0.07}s` // Stagger the fade-in
+        line.className = 'whitespace-pre'
+
+        for (let j = 0; j < charsPerLine; j++) {
+          const charSpan = document.createElement('span')
+          charSpan.style.animation = `symbol-fade ${
+            Math.random() * 3 + 2
+          }s infinite`
+          charSpan.style.animationDelay = `${Math.random() * 5 + 1}s`
+          
+          if (Math.random() < 0.2) {
+            charSpan.textContent = ' '
+          } else {
+            charSpan.textContent = symbols[Math.floor(Math.random() * symbols.length)]
+          }
+          
+          line.appendChild(charSpan)
+        }
         backgroundContainer.appendChild(line)
       }
     }
 
     generateBackground()
     window.addEventListener('resize', generateBackground)
-    return () => window.removeEventListener('resize', generateBackground)
+    return () => {
+      window.removeEventListener('resize', generateBackground)
+      document.head.removeChild(styleSheet)
+    }
   }, [])
 
   return (
@@ -57,12 +77,12 @@ export default function Home() {
     >
       {/* Background Pattern  */}
       <div 
-        className="background-pattern fixed inset-0 text-[#171717] whitespace-pre pointer-events-none"
+        className="background-pattern fixed inset-0 whitespace-pre pointer-events-none"
         style={{ 
-          lineHeight: '24px',
+          lineHeight: '24.2px',
           fontFamily: 'inherit',
           zIndex: 0,
-          opacity: 0.06, 
+          opacity: 0.08, 
           fontWeight: 500,
         }}
       />
@@ -74,29 +94,29 @@ export default function Home() {
         fontSize: '16px'
       }}>
         <section className="space-y-0">
-          <h1 className="content-line font-normal text-[#171717]">Chidambaram arunachalam</h1>
-          <p className="content-line text-[#171717]">bangalore, ind</p>
+          <h1 className="content-line font-normal white-bg max-w-max">Chidambaram arunachalam</h1>
+          <p className="content-line max-w-max white-bg">bangalore, ind</p>
         </section>
 
         <section className='space-y-6'>
             <section className="space-y-0 pt-6">
-            <h2 className="content-line font-bold text-[#171717]">today</h2>
+            <h2 className="content-line font-bold max-w-max white-bg">today</h2>
             {/* <p className="content-line text-[#171717] max-w-2xl" >
                 studying to be a webmaster, designing and building interfaces
                 everyday. currently obsessed with weightlifting, pickleball, and
                 learning 中文.
             </p> */}
-            <p className="content-line text-[#171717] max-w-2xl" >
+            <p className="content-line max-w-xl white-bg" >
             building stuff and crafting designs daily, aiming to make things 
             simple and beautiful. currently balancing research, 
-            internship, & rookie twitter posts(<Link href="https://x.com/itsss_chidu" target="_blank" className='hover:bg-black hover:text-white'>follow pls T_T</Link>)
+            internship, & rookie twitter posts (<Link href="https://x.com/itsss_chidu" target="_blank" className='hover:bg-black hover:text-white'>follow pls T_T</Link>)
             </p>
             </section>
 
             <section className="space-y-0">
             {/* <p className="content-line font-semibold text-[#171717]">previously worked at</p> */}
-            <div className="content-line text-[#171717] max-w-2xl">
-                <p className="content-line text-[#171717] inline-block mr-3">previously worked at</p>
+            <div className="content-line white-bg max-w-max">
+                <p className="content-line inline-block mr-3">previously worked at</p>
                 <Link href="https://www.nokia.com" target="_blank" className="underline hover:bg-black hover:text-white">nokia</Link>,{' '}
                 <Link href="https://www.infosys.com" target="_blank" className="underline hover:bg-black hover:text-white">infosys</Link>,{' '}
                 <Link href="https://www.sitesgo.com" target="_blank" className="underline hover:bg-black hover:text-white">sitesGo</Link>.
@@ -113,13 +133,13 @@ export default function Home() {
         </section>
 
         <section className='space-y-0'>
-            <h2 className="content-line font-bold">stuff i built</h2>
-            <p className="content-line">
+            <h2 className="content-line font-bold max-w-max white-bg ">stuff i built</h2>
+            <div className="content-line white-bg max-w-max">
             <Link href="https://github.com/ChiduAnush/Halt" target="_blank" className="underline hover:bg-black hover:text-white">halt</Link>,{' '}
             <Link href="https://github.com/ChiduAnush/SpotiTunes" target="_blank" className="underline hover:bg-black hover:text-white">spotitunes</Link>,{' '}
             <Link href="https://youtu.be/xvFZjo5PgG0?si=NH6K4iIcb7a-RPK3" className="hover:bg-[#171717] hover:text-white">(〜￣▽￣)〜</Link>,{' '}
             <Link href="https://github.com/ChiduAnush/EmailReadReceipts" target="_blank" className="underline hover:bg-black hover:text-white">emailReadReceipts</Link>.
-          </p>
+          </div>
         </section>
 
         {/* <section className="space-y-0">
@@ -136,19 +156,19 @@ export default function Home() {
           </p>
         </section> */}
 
-        <section className="space-y-0">
-          <h2 className="content-line font-bold text-[#171717]">links</h2>
+        <section className="space-y-0 white-bg max-w-max">
+          <h2 className="content-line font-bold ">links</h2>
           <div className="space-y-0">
-            <p className="content-line text-[#171717]">
+            <p className="content-line">
               <Link href="https://x.com/itsss_chidu" target="_blank" className='underline hover:bg-[#171717] hover:text-white'>twitter/x</Link>
             </p>
-            <p className="content-line text-[#171717]">
+            <p className="content-line">
               <Link href="https://www.linkedin.com/in/chidambaram-arunachalam" target="_blank" className="underline hover:bg-black hover:text-white">LinkedIn</Link>
             </p>
-            <p className="content-line text-[#171717]">
+            <p className="content-line">
               <Link href="https://www.youtube.com/@chiduschamberofmusic9146" target="_blank" className='underline hover:bg-black hover:text-white'>youtube</Link>
             </p> 
-            <p className="content-line text-[#171717]">
+            <p className="content-line">
               <Link href="#" className="underline hover:bg-black hover:text-white">blog</Link>
             </p>
           </div>

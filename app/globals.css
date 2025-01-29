@@ -37,17 +37,29 @@ body {
     opacity: 0;
   }
   to {
-    opacity: 0.06;
+    opacity: 0.055;
   }
 }
 
 .main-content {
   /* animation: fadeIn 1.5s ease-in-out; */
   animation-name: fadeIn;
-  animation-duration: 1s;
+  animation-duration: 2s;
   animation-timing-function: ease-in-out;
 }
 
 .background-pattern {
-  animation: BGfadeIn 2s ease-in-out;
+  animation: BGfadeIn 3s ease-in-out;
 }
+
+
+.white-bg {
+  /* border: 1px solid red; */
+  background-color: white;  
+}
+
+
+
+
+/* -----------*/
+
