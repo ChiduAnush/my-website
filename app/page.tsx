@@ -4,23 +4,11 @@ import { useEffect, useRef} from 'react'
 import { GeistMono } from 'geist/font/mono'
 import Link from 'next/link'
 
-// Add global styles for the animation
-const styles = `
-  @keyframes symbol-fade {
-    0%, 100% { opacity: 0.55; }
-    50% { opacity: 1; }
-  }
-`
-
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null)
   
   useEffect(() => {
-    // Inject the animation styles
-    const styleSheet = document.createElement('style')
-    styleSheet.innerHTML = styles
-    document.head.appendChild(styleSheet)
-
+    
     const generateBackground = () => {
       if (!containerRef.current) return
       
@@ -38,25 +26,20 @@ export default function Home() {
 
       for (let i = 0; i < linesNeeded; i++) {
         const line = document.createElement('div')
-        line.style.height = '24.2px'
-        line.style.fontSize = '16px'
-        line.className = 'whitespace-pre'
+        let lineContent = ''
 
         for (let j = 0; j < charsPerLine; j++) {
-          const charSpan = document.createElement('span')
-          charSpan.style.animation = `symbol-fade ${
-            Math.random() * 3 + 2
-          }s infinite`
-          charSpan.style.animationDelay = `${Math.random() * 5 + 1}s`
-          
-          if (Math.random() < 0.2) {
-            charSpan.textContent = ' '
+          if (Math.random() < 0.2) { // 20% chance of whitespace
+            lineContent += ' '
           } else {
-            charSpan.textContent = symbols[Math.floor(Math.random() * symbols.length)]
+            lineContent += symbols[Math.floor(Math.random() * symbols.length)]
           }
-          
-          line.appendChild(charSpan)
         }
+        line.textContent = lineContent
+        line.style.height = '24px'
+        line.style.fontSize = '16px'
+        line.className = 'fade-in-line'
+        line.style.animationDelay = `${i * 0.07}s` // Stagger the fade-in
         backgroundContainer.appendChild(line)
       }
     }
@@ -65,7 +48,6 @@ export default function Home() {
     window.addEventListener('resize', generateBackground)
     return () => {
       window.removeEventListener('resize', generateBackground)
-      document.head.removeChild(styleSheet)
     }
   }, [])
 
