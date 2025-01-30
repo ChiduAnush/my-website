@@ -54,7 +54,7 @@ export default function Home() {
   return (
     <div 
       ref={containerRef}
-      className={`min-h-screen relative ${GeistMono.className} overflow-auto`}
+      className={`min-h-screen relative ${GeistMono.className} max-w-max overflow-auto`}
       style={{ fontSize: '16px' }}
     >
       {/* Background Pattern  */}

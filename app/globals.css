@@ -63,3 +63,10 @@ body {
 
 /* -----------*/
 
+
+::selection {
+  background: #171717;
+  color: white;  /* Ensure text is visible on black background */
+}
+
+
