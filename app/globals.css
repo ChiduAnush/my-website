@@ -13,6 +13,9 @@ body {
   font-size: 16px;
   line-height: 1.5;
   overflow: auto;
+  letter-spacing: 0.01em; /* Adjust as needed */
+
+  
 }
 
 .content-line {

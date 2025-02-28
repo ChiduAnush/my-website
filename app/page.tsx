@@ -29,7 +29,7 @@ export default function Home() {
         let lineContent = ''
 
         for (let j = 0; j < charsPerLine; j++) {
-          if (Math.random() < 0.2) { // 20% chance of whitespace
+          if (Math.random() < 0.25) { // 20% chance of whitespace
             lineContent += ' '
           } else {
             lineContent += symbols[Math.floor(Math.random() * symbols.length)]
@@ -64,7 +64,7 @@ export default function Home() {
           lineHeight: '24.2px',
           fontFamily: 'inherit',
           zIndex: 0,
-          opacity: 0.08, 
+          opacity: 0.075, 
           fontWeight: 500,
         }}
       />
@@ -88,10 +88,10 @@ export default function Home() {
                 everyday. currently obsessed with weightlifting, pickleball, and
                 learning 中文.
             </p> */}
-            <p className="content-line max-w-xl white-bg" >
-            building stuff and crafting designs daily, aiming to make things 
-            simple and beautiful. currently balancing research, 
-            internship, & rookie twitter posts (<Link href="https://x.com/itsss_chidu" target="_blank" className='hover:bg-black hover:text-white'>follow pls T_T</Link>)
+            <p className="content-line max-w-2xl white-bg" >
+            studying to be better, trying to understand
+            how everything works. currently balancing research, 
+            internship, and rookie twitter posts (<Link href="https://x.com/itsss_chidu" target="_blank" className='hover:bg-black hover:text-white'>follow pls?</Link>)
             </p>
             </section>
 
@@ -115,12 +115,14 @@ export default function Home() {
         </section>
 
         <section className='space-y-0'>
-            <h2 className="content-line font-bold max-w-max white-bg ">stuff i built</h2>
-            <div className="content-line white-bg max-w-max">
+            <h2 className="content-line font-bold max-w-max white-bg tracking-tight">stuff i built</h2>
+            <div className="content-line white-bg max-w-2xl">
             <Link href="https://github.com/ChiduAnush/Halt" target="_blank" className="underline hover:bg-black hover:text-white">halt</Link>,{' '}
             <Link href="https://github.com/ChiduAnush/SpotiTunes" target="_blank" className="underline hover:bg-black hover:text-white">spotitunes</Link>,{' '}
-            <Link href="https://youtu.be/xvFZjo5PgG0?si=NH6K4iIcb7a-RPK3" className="hover:bg-[#171717] hover:text-white">(〜￣▽￣)〜</Link>,{' '}
-            <Link href="https://github.com/ChiduAnush/EmailReadReceipts" target="_blank" className="underline hover:bg-black hover:text-white">emailReadReceipts</Link>.
+            {/* <Link href="https://youtu.be/xvFZjo5PgG0?si=NH6K4iIcb7a-RPK3" className="hover:bg-[#171717] hover:text-white">(〜￣▽￣)〜</Link>,{' '} */}
+            <Link href="https://github.com/ChiduAnush/EmailReadReceipts" target="_blank" className="underline hover:bg-black hover:text-white">emailReadReceipts</Link>,{' '}
+            <Link href="https://github.com/ChiduAnush/lc3-vm" target="_blank" className="underline hover:bg-black hover:text-white">lc3 virtual machine</Link>.
+
           </div>
         </section>
 
@@ -151,8 +153,11 @@ export default function Home() {
               <Link href="https://www.youtube.com/@chiduschamberofmusic9146" target="_blank" className='underline hover:bg-black hover:text-white'>youtube</Link>
             </p> 
             <p className="content-line">
-              <Link href="#" className="underline hover:bg-black hover:text-white">blog</Link>
+              <Link href="https://youtu.be/xvFZjo5PgG0?si=NH6K4iIcb7a-RPK3" className="underline hover:bg-black hover:text-white">blog</Link>
             </p>
+            {/* <p className="content-line">
+              <Link href="https://youtu.be/xvFZjo5PgG0?si=NH6K4iIcb7a-RPK3" className="hover:bg-[#171717] hover:text-white">(〜￣▽￣)〜</Link>
+            </p> */}
           </div>
         </section>
 
