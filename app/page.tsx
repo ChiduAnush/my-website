@@ -99,9 +99,12 @@ export default function Home() {
             {/* <p className="content-line font-semibold text-[#171717]">previously worked at</p> */}
             <div className="content-line white-bg max-w-max">
                 <p className="content-line inline-block mr-3">previously worked at</p>
-                <Link href="https://www.nokia.com" target="_blank" className="underline hover:bg-black hover:text-white">nokia</Link>,{' '}
+                {/* <Link href="https://www.nokia.com" target="_blank" className="underline hover:bg-black hover:text-white">nokia</Link>,{' '} */}
                 <Link href="https://www.infosys.com" target="_blank" className="underline hover:bg-black hover:text-white">infosys</Link>,{' '}
-                <Link href="https://www.sitesgo.com" target="_blank" className="underline hover:bg-black hover:text-white">sitesGo</Link>.
+                <Link href="https://www.sitesgo.com" target="_blank" className="underline hover:bg-black hover:text-white">sitesGo</Link>,{' '}
+                <p className="content-line inline-block mr-3">currently at</p>
+                <Link href="https://www.nokia.com" target="_blank" className="underline hover:bg-black hover:text-white">nokia</Link>.
+
                 {/* <Link href="#" className="underline hover:bg-black hover:text-white">highlight</Link>,{' '}
                 <Link href="#" className="underline hover:bg-black hover:text-white">codecademy</Link>,{' '}
                 <Link href="#" className="underline hover:bg-black hover:text-white">smartsheet</Link>,{' '}
